@@ -1,14 +1,13 @@
-package com.example.spring.batch.bach.users;
+package com.example.spring.batch.mapper;
 
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 
 import com.example.spring.batch.entithy.Users;
 
-public class UsersCsvMapper
-		extends BeanWrapperFieldSetMapper<Users> {
+public class UsersMapper
+	extends BeanWrapperFieldSetMapper<Users> {
 
-	public UsersCsvMapper() {
-		super();
+	public UsersMapper() {
 		setTargetType(Users.class);
 	}
 

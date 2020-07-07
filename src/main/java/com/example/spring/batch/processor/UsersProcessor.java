@@ -1,4 +1,4 @@
-package com.example.spring.batch.bach.users;
+package com.example.spring.batch.processor;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
-public class UsersCsvImportProcessor
+public class UsersProcessor
 		implements ItemProcessor<Users, Users> {
 
 	@Override

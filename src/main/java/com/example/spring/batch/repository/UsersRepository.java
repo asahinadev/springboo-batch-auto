@@ -9,7 +9,7 @@ import com.example.spring.batch.entithy.Users;
 
 @Repository
 public interface UsersRepository
-		extends JpaRepository<Users, Integer> {
+	extends JpaRepository<Users, Integer> {
 
 	public List<String> findAllByDeletedIsNull();
 

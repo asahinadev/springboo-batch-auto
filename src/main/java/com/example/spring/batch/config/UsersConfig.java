@@ -1,4 +1,4 @@
-package com.example.spring.batch.bach.users;
+package com.example.spring.batch.config;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -14,11 +14,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
 import com.example.spring.batch.entithy.Users;
+import com.example.spring.batch.listener.UsersListener;
+import com.example.spring.batch.mapper.UsersMapper;
+import com.example.spring.batch.processor.UsersProcessor;
 import com.example.spring.batch.repository.UsersRepository;
+import com.example.spring.batch.writer.UsersCsvImportWriter;
 
 @Configuration
 @EnableBatchProcessing
-public class UsersCsvImportConfig {
+public class UsersConfig {
 
 	static final String[] CSV_FIELDS = {
 			"username",
@@ -36,7 +40,7 @@ public class UsersCsvImportConfig {
 	UsersRepository usersRepository;
 
 	@Autowired
-	UsersCsvImportProcessor processor;
+	UsersProcessor processor;
 
 	@Bean
 	public FlatFileItemReader<Users> usersFlatFileItemReader() {
@@ -45,13 +49,13 @@ public class UsersCsvImportConfig {
 				.resource(new ClassPathResource("users.csv"))
 				.delimited()
 				.names(CSV_FIELDS)
-				.fieldSetMapper(new UsersCsvMapper())
+				.fieldSetMapper(new UsersMapper())
 				.build();
 	}
 
 	@Bean
 	public Job usersCsvIportJob(
-			UsersCsvImportListener listener,
+			UsersListener listener,
 			Step usersCsvIportStep1) {
 		return jobBuilderFactory.get("usersCsvIportJob")
 				.incrementer(new RunIdIncrementer())

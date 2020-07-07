@@ -1,4 +1,4 @@
-package com.example.spring.batch.bach.users;
+package com.example.spring.batch.writer;
 
 import java.util.List;
 
