@@ -29,3 +29,5 @@ HELP.md
 .vscode/
 /.mvn/
 /bin
+/.gradle/
+/.apt_generated_tests/
